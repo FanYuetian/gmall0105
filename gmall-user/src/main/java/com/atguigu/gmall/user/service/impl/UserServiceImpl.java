@@ -34,10 +34,14 @@ public class UserServiceImpl implements UserService {
     public List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId) {
 //        Example e = new Example(UmsMemberReceiveAddress.class);
 //        e.createCriteria().andEqualTo("memberId",memberId);
-        UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
-        umsMemberReceiveAddress.setMemberId(memberId);
+//        UmsMemberReceiveAddress umsMemberReceiveAddress = new UmsMemberReceiveAddress();
+//        umsMemberReceiveAddress.setMemberId(memberId);
+//
+//        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
 
-        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.select(umsMemberReceiveAddress);
+        Example example = new Example(UmsMemberReceiveAddress.class);
+        example.createCriteria().andEqualTo("memberId",memberId);
+        List<UmsMemberReceiveAddress> umsMemberReceiveAddresses = umsMemberReceiveAddressMapper.selectByExample(null);
 
         return umsMemberReceiveAddresses;
     }
